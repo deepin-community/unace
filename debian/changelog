@@ -1,0 +1,218 @@
+unace (1.2b-19) unstable; urgency=medium
+
+  * Switch to debhelper compatibility level 13.
+  * Switch to Standards-Version 4.5.1 (no changes needed).
+  * Remove versioned Build-Depends on dpkg-dev satisfied in stable.
+  * Change upstream statement in README.Debian from promise to guarantee.
+  * Mark debian/watch as version 4.
+  * Add debian/source/lintian-overrides to declare missing upstream.
+  * Switch to dh sequencer.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 24 Dec 2020 19:15:28 +0100
+
+unace (1.2b-18) unstable; urgency=medium
+
+  * Namespace debhelper README.Debian fragment file too.
+  * Remove unnecessary unace.dirs debhelper fragment file.
+  * Switch to debhelper compatibility level 12.
+  * Switch from debian/compat to debhelper-commpat in Build-Depends.
+  * Switch to Standards-Version 4.4.0 (no changes needed).
+  * Fix cross-compilation support:
+    - Stop using gccmaked which does not support cross-building, and instead
+      move the dependency information into a separate makefile.dep, which will
+      be created by a call to $(CPP) -MM directly in the upstream makefile.
+    - Stop symlinking on build and removing on clean both makefile and gccmaked
+      from the unix directory, and call the upstream makefile from there.
+    - We can now always call the upstream makefile unconditionally.
+    - Include dpkg's buildtools.mk and pass CC to the build system.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 11 Jul 2019 01:41:06 +0200
+
+unace (1.2b-17) unstable; urgency=medium
+
+  * Namespace debhelper files with package name.
+  * Wrap and sort dependency fields.
+  * Switch to debhelper compatibility level 11.
+  * Bump Standards-Version to 4.3.0 (no changes needed).
+  * Fix unace(1) man page synopsis markup.
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 09 Feb 2019 18:29:42 +0100
+
+unace (1.2b-16) unstable; urgency=medium
+
+  * Switch to debhelper compatibility level 10.
+  * Switch from broken getconf cross interface to future=+lfs build flags.
+  * Set Rules-Requires-Root to no.
+  * Bump Standards-Version to 4.1.1 (no changes needed).
+
+ -- Guillem Jover <guillem@debian.org>  Sun, 05 Nov 2017 04:39:26 +0100
+
+unace (1.2b-15) unstable; urgency=medium
+
+  * Use https for hadrons.org URLs.
+  * Bump Standards-Version to 3.9.8 (no changes needed).
+  * Add metadata to the patches.
+  * Switch to the dpkg makefile fragments in debian/rules.
+  * Enable all hardening flags.
+
+ -- Guillem Jover <guillem@debian.org>  Fri, 03 Jun 2016 01:04:19 +0200
+
+unace (1.2b-14) unstable; urgency=low
+
+  * Enable LFS, using getconf to pass the correct build flags.
+
+ -- Guillem Jover <guillem@debian.org>  Tue, 11 Aug 2015 04:30:18 +0200
+
+unace (1.2b-13) unstable; urgency=low
+
+  * Use https for the copyright Format URL.
+  * Switch Vcs-Browser to a cgit URL.
+  * Now using Standards-Version 3.9.6 (no changes needed).
+  * Move local filesystem location of GPL to a Comment: copyright section.
+  * Move AUTHOR section in man page to a comment header.
+  * Update SEE ALSO in man page. Remove ppmd(1), and add xz(1) and unrar(1).
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 13 May 2015 03:56:11 +0200
+
+unace (1.2b-12) unstable; urgency=high
+
+  * Fix buffer overflow when reading ace files with file headers smaller
+    than expected. Fixes CVE-2015-2063. (Closes: #775003)
+
+ -- Guillem Jover <guillem@debian.org>  Tue, 24 Feb 2015 10:47:45 +0100
+
+unace (1.2b-11) unstable; urgency=medium
+
+  * Now using Standards-Version 3.9.5 (no changes needed).
+  * Remove package creation information from debian/copyright.
+  * Switch debian/copyright to machine-readable format 1.0.
+  * Switch to debhelper compatibility level 9.
+
+ -- Guillem Jover <guillem@debian.org>  Sun, 11 May 2014 07:30:06 +0200
+
+unace (1.2b-10) unstable; urgency=low
+
+  * Rework debian/rules targets:
+    - Remove install dependency from binary-indep.
+    - Rename build to build-arch.
+    - Rename install to install-arch.
+    - Add new build and build-indep targets.
+  * Now using Standards-Version 3.9.3.
+  * Add empty debian/watch documenting where the original source came from.
+  * Fix format-security build failures.
+  * Use «dpkg-architecture -qDEB_HOST_ARCH_ENDIAN» instead of building a test
+    program to detect the host architecture endianness.
+  * Use dpkg-buildflags to set CPPFLAGS, CFLAGS and LDFLAGS.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 20 Jun 2012 10:57:02 +0200
+
+unace (1.2b-9) unstable; urgency=low
+
+  * Now using Standards-Version 3.9.2 (no changes needed).
+
+ -- Guillem Jover <guillem@debian.org>  Fri, 27 May 2011 01:59:37 +0200
+
+unace (1.2b-8) unstable; urgency=low
+
+  * Switch to debhelper compatibility level 7.
+  * Use dh_prep instead of “dh_clean -k”.
+  * Use $(filter ...) instead of $(findstring ...) to extract space separated
+    options from DEB_BUILD_OPTIONS in debian/rules.
+  * Now using Standards-Version 3.8.3 (no changes needed).
+  * Switch to source format “3.0 (quilt)”:
+    - Remove quilt from Build-Depends.
+    - Remove quilt.make include from debian/rules.
+    - Remove patch and unpatch targets from debian/rules.
+    - Remove now unneeded debian/README.source.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 02 Dec 2009 22:36:40 +0100
+
+unace (1.2b-7) unstable; urgency=low
+
+  * Update packaging Vcs fields to the new URL.
+  * Add a debian/README.source file.
+  * Now using Standards-Version 3.8.0.
+  * Cleanup debian/copyright:
+    - Change 'Upstream Author' to 'Copyright Holder'.
+    - Add missing copyright years and use UTF-8 copyright symbol.
+    - Refer to GPL-2 from common-licenses instead of just GPL.
+  * Refresh patches with -pab. (Closes: #485261)
+
+ -- Guillem Jover <guillem@debian.org>  Sun, 22 Jun 2008 07:53:40 +0300
+
+unace (1.2b-6) unstable; urgency=low
+
+  * Add Vcs-Browser and Vcs-Svn fields.
+  * Fix debian/rules dependencies to play nice with parallel builds.
+    - Change binary-arch and binary-indep to stop depending on build.
+    - Move patch dependency to unix/makefile.
+  * Now using Standards-Version 3.7.3 (no changes needed).
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 05 Dec 2007 06:41:13 +0200
+
+unace (1.2b-5) unstable; urgency=low
+
+  * Switched to quilt:
+    - Add new debian/patches/series file.
+    - Add Build-Depends on 'quilt (>= 0.40)'.
+    - Include quilt.make from debian/rules.
+    - Remove now unused debian/patch.mk.
+  * Clean up patches:
+    - debian/patches/001_cpp_define.patch: Rediff.
+    - debian/patches/002_fix_warnings.patch: Likewise.
+    - debian/patches/003_security.patch: Likewise. Remove .orig duplicate.
+  * Make the program 64 bit clean, by using <stdint.h> to typedef the data
+    types independently of the target system. (Closes: #431380)
+    - debian/patches/004_64_bit_clean.patch: New file.
+  * Do not ignore errors from from 'make clean' on the clean target.
+
+ -- Guillem Jover <guillem@debian.org>  Tue, 17 Jul 2007 09:29:11 +0300
+
+unace (1.2b-4) unstable; urgency=low
+
+  * Now using Standards-Version 3.7.2 (no changes needed).
+  * Switched to debhelper compatibility level 5.
+  * Lower-case the manpage title.
+  * Reindent debian/copyright to 4 spaces.
+  * Update FSF address.
+  * Use dh_install instead of using INSTALL_PROGRAM.
+  * Clean up debian/rules:
+    - Remove unused commented debhelper commands.
+    - Do not use a build stamp.
+    - Switch clean to single-colon target, make it depend on unpatch.
+    - Replace the configure target to normal file targets to be copied.
+  * Clean up debian/patch.mk:
+    - Rename clean to unpatch.
+    - Switch patch and unpatch to single-colon targets.
+    - Add unpatch to the PHONY targets.
+
+ -- Guillem Jover <guillem@debian.org>  Mon,  7 Aug 2006 15:27:52 +0300
+
+unace (1.2b-3) unstable; urgency=high
+
+  * Fix several buffer overflows [CAN-2005-0160] and directory
+    traversal bugs [CAN-2005-0161]. (Closes: #296839, #248374)
+    Thanks to Ulf Härnhammar <Ulf.Harnhammar.9485@student.uu.se>.
+  * Use License: instead of missplaced Copyright: on debian/copyright.
+  * Provide a patch target instead of pre-build.
+    - debian/patch.mk: Likewise.
+    - debian/rules: Fix accordingly.
+
+ -- Guillem Jover <guillem@debian.org>  Sun, 27 Feb 2005 03:03:16 +0100
+
+unace (1.2b-2) unstable; urgency=low
+
+  * debian/test-endian.c:
+    - Added a lost sizeof in the big endian detection. (Closes: #239654)
+      Thanks Falk Hueffner <falk@debian.org>
+    - Print error message to stderr. And fix and improve the message.
+  * debian/copyrigth: Make clearer the origin of the original source.
+  * Added more "SEE ALSO" entries to the man page.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 24 Mar 2004 09:01:32 +0100
+
+unace (1.2b-1) unstable; urgency=low
+
+  * Initial Release. (Closes: #220930)
+
+ -- Guillem Jover <guillem@debian.org>  Sun,  7 Mar 2004 10:58:50 +0100

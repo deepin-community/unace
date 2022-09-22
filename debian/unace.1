@@ -1,0 +1,55 @@
+.\" unace manual page - unace(1)
+.\"
+.\" Copyright © 2004, 2006, 2015, 2018 Guillem Jover <guillem@debian.org>
+.\"
+.\" This is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program.  If not, see <https://www.gnu.org/licenses/>.
+.
+.TH unace 1 2018-10-07 "1.2b" "unace manual"
+.SH NAME
+unace \- extract, test and view ACE archives
+.SH SYNOPSIS
+.B unace
+.I command
+.RI [ switch \&...\&]
+.IR archive [ .ace ]
+.SH DESCRIPTION
+The \fBunace\fP utility is used for extracting, testing and viewing
+the contents of archives created with the ACE archiver.
+.SH COMMANDS
+.TP
+.B e
+Extract files.
+.TP
+.B l
+List archive.
+.TP
+.B t
+Test archive integrity.
+.TP
+.B v
+List archive (verbose).
+.TP
+.B x
+Extract files with full path.
+.SH SWITCHES
+.TP
+.B \-y
+Assume 'yes' on all questions, never ask for input.
+.SH SEE ALSO
+.BR xz (1),
+.BR gzip (1),
+.BR bzip2 (1),
+.BR zip (1),
+.BR arj (1),
+.BR unrar (1).
